@@ -126,30 +126,32 @@ Returns the position of a particular node in a table (and all related infos).
 createTable(
     columns: number,
     rows: number,
-    getCellContent?: (row: number, column: number) => Node[]
+    getCellContent?: (row: number, column: number) => Node[],
+    getCell?: (row: number, column: number) => Block
 ): Block
 ```
 
-Returns a table. The content can be filled with the given `getCellContent` generator.
+Returns a table. The content can be filled with the given `getCellContent` generator _or_ the cell can be provided by `getCell`.
 
 ### `utils.createRow`
 
 ```js
 createRow(
     columns: number,
-    getCellContent?: (column: number) => Node[]
+    getCellContent?: (column: number) => Node[],
+    getCell?: (row: number, column: number) => Block
 ): Block
 ```
 
-Returns a row. The content can be filled with the given `getCellContent` generator.
+Returns a row. The content can be filled with the given `getCellContent` generator _or_ the cell can be provided by `getCell`.
 
 ### `utils.createCell`
 
 ```js
-createCell(opts: Options, nodes?: Node[]): Block
+createCell(opts: Options, nodes?: Node[], data?: Data): Block
 ```
 
-Returns a cell. The content defaults to an empty `typeContent` block.
+Returns a cell. The content defaults to an empty `typeContent` block. Can supply `Block` `Data` via optional `data` parameter.
 
 ## Changes
 
